@@ -1,5 +1,5 @@
 import "./App.css";
-import { Navbar, Footer, Main } from "./components";
+import { Navbar, Footer, Main, Header } from "./components";
 
 const App = () => {
   return (
