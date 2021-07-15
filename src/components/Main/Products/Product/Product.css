@@ -1,0 +1,15 @@
+#img {
+  max-width: auto;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.card-width {
+  width: 18rem;
+  height: auto;
+}
+
+.inherit-width {
+  max-width: inherit;
+}
