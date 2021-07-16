@@ -3,10 +3,9 @@ import Axios from "axios";
 import Product from "./Product/Product";
 import { Loading } from "../";
 
-const Products = () => {
+const Products = ({ addCart }) => {
   const [products, setProducts] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
 
   const productsOffline = [
     {
@@ -79,11 +78,6 @@ const Products = () => {
       });
   }, []);
 
-  const addCartHandler = (id, quantity) => {
-    setCartItems(id);
-    console.log("========= Your cart is: ", cartItems);
-  };
-
   return (
     <div className="container">
       <div className="row d-flex align-items-sm-start justify-content-sm-start justify-content-center align-items-sm-center">
@@ -92,15 +86,13 @@ const Products = () => {
         ) : products !== null ? (
           products.map((product) => {
             return (
-              <Product
-                key={product.id}
-                product={product}
-                addCart={addCartHandler}
-              />
+              <Product key={product.id} product={product} addCart={addCart} />
             );
           })
-        ) : (
+        ) : products === null ? (
           <Loading />
+        ) : (
+          <div></div>
         )}
       </div>
     </div>

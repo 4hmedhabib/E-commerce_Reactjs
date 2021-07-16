@@ -1,0 +1,10 @@
+#res-img {
+  max-width: auto;
+  max-height: 400px;
+  object-fit: contain;
+  object-position: center;
+}
+
+body {
+  background-color: rgb(253, 253, 253);
+}

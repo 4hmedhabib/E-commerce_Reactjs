@@ -1,7 +1,9 @@
 import React from "react";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ cartItems }) => {
+  console.log(cartItems);
+
   return (
     <div>
       <nav className="navbar navbar-light bg-light">
@@ -16,7 +18,7 @@ const Navbar = () => {
               id="badge-radius"
               className="position-absolute top-0 start-100 translate-middle-x badge bg-danger"
             >
-              2 <span className="visually-hidden">Cart Items</span>
+              {cartItems} <span className="visually-hidden">Cart Items</span>
             </span>
           </span>
         </div>

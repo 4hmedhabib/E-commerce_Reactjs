@@ -1,6 +1,6 @@
 import "./Product.css";
 
-const Product = ({ product }) => {
+const Product = ({ product, addCart }) => {
   return (
     <div className="col-10 col-xl-3 col-md-4 col-sm-6 g-3 ">
       <div className="inherit-width card d-flex align-items-center text-center justify-content-center">
@@ -16,8 +16,11 @@ const Product = ({ product }) => {
             <button className="btn btn-sm btn-primary text-light me-2">
               view
             </button>
-            <button className="btn btn-sm btn-light me-2">
-              <i className="bi bi-cart-plus-fill "></i>
+            <button
+              onClick={() => addCart(product)}
+              className="btn btn-sm btn-light me-2"
+            >
+              <i className="bi bi-cart-plus-fill"></i>
             </button>
           </div>
         </div>

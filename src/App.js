@@ -1,12 +1,23 @@
 import "./App.css";
-import { Navbar, Footer, Main, Header } from "./components";
+import { useState, useEffect } from "react";
+import { Navbar, Footer, Home, ProductDetail } from "./components";
 
 const App = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  const addCartHandler = (product) => {
+    setCartItems((prevState) => [...prevState, product]);
+  };
+
+  console.log("Cart is: ", cartItems);
+
   return (
     <div className="d-flex flex-column min-vh-100">
-      <Navbar />
+      <div>{}</div>
+      <Navbar cartItems={cartItems.length} />
       <div className="d-flex flex-row">
-        <Main />
+        <ProductDetail />
+        {/* <Home addCart={addCartHandler} /> */}
       </div>
       <Footer />
     </div>
