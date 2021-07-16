@@ -1,5 +1,6 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Navbar, Footer, Home, ProductDetail } from "./components";
 
 const App = () => {
@@ -9,18 +10,32 @@ const App = () => {
     setCartItems((prevState) => [...prevState, product]);
   };
 
-  console.log("Cart is: ", cartItems);
-
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <div>{}</div>
-      <Navbar cartItems={cartItems.length} />
-      <div className="d-flex flex-row">
-        <ProductDetail />
-        {/* <Home addCart={addCartHandler} /> */}
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        <Navbar cartItems={cartItems.length} />
+        <div className="d-flex flex-row">
+          <Switch>
+            <Route exact path="/">
+              <Home addCart={addCartHandler} />
+            </Route>
+            <Route exact path="/products/:productId">
+              <ProductDetail />
+            </Route>
+            <Route path="*">
+              <div className="text-center container">
+                <h1>Page Not Found 404</h1>
+                <p>
+                  Back To <Link to="/">Home</Link>
+                </p>
+              </div>
+            </Route>
+          </Switch>
+        </div>
+
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Router>
   );
 };
 
