@@ -6,6 +6,8 @@ import { Navbar, Footer, Home, ProductDetail } from "./components";
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
 
+  const [isAdded, setIsAdded] = useState(false);
+
   const addCartHandler = (product) => {
     setCartItems((prevState) => [...prevState, product]);
   };
@@ -17,7 +19,7 @@ const App = () => {
         <div className="d-flex flex-row">
           <Switch>
             <Route exact path="/">
-              <Home addCart={addCartHandler} />
+              <Home addCart={addCartHandler} cart={cartItems} />
             </Route>
             <Route exact path="/products/:productId">
               <ProductDetail />

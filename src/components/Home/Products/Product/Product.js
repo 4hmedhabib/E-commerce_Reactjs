@@ -1,6 +1,6 @@
 import "./Product.css";
 
-const Product = ({ product, addCart }) => {
+const Product = ({ product, addCart, cart }) => {
   return (
     <div className="col-10 col-xl-3 col-md-4 col-sm-6 g-3 ">
       <div className="inherit-width card d-flex align-items-center text-center justify-content-center">
@@ -11,16 +11,25 @@ const Product = ({ product, addCart }) => {
           </h5>
         </div>
         <div className="w-100 d-flex flex-row justify-content-around align-items-center mb-2">
-          <p className="h5">${product.price}</p>
+          <p className="h5 text-danger">${product.price}</p>
           <div>
             <button className="btn btn-sm btn-primary text-light me-2">
               view
             </button>
             <button
               onClick={() => addCart(product)}
-              className="btn btn-sm btn-light me-2"
+              disabled={cart.some((cartItem) => cartItem.id === product.id)}
+              className={
+                "btn btn-sm  me-2 " +
+                (cart.some((cartItem) => cartItem.id === product.id)
+                  ? "btn-light"
+                  : "btn-secondary")
+              }
             >
-              <i className="bi bi-cart-plus-fill"></i>
+              <i className="bi bi-cart-plus-fill"></i>{" "}
+              {cart.some((cartItem) => cartItem.id === product.id)
+                ? "Cart Added"
+                : "Add Cart"}
             </button>
           </div>
         </div>

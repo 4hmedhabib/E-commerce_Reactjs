@@ -3,7 +3,7 @@ import Axios from "axios";
 import Product from "./Product/Product";
 import { Loading } from "../";
 
-const Products = ({ addCart }) => {
+const Products = ({ addCart, cart }) => {
   const [products, setProducts] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
 
@@ -86,7 +86,12 @@ const Products = ({ addCart }) => {
         ) : products !== null ? (
           products.map((product) => {
             return (
-              <Product key={product.id} product={product} addCart={addCart} />
+              <Product
+                key={product.id}
+                product={product}
+                addCart={addCart}
+                cart={cart}
+              />
             );
           })
         ) : products === null ? (

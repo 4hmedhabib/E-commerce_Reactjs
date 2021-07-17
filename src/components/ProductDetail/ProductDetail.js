@@ -3,19 +3,25 @@ import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
 import "./ProductDetial.css";
 
-const ProductDetail = ({ errMsg }) => {
+const ProductDetail = () => {
   const [product, setProduct] = useState("");
+  const [errorMsg, setErrorMsg] = useState(false);
+
   const productId = useParams();
 
   useEffect(() => {
-    Axios.get(`https://fakestoreapi.com/products/${productId.productId}`).then(
-      (res) => {
+    Axios.get(`https://fakestoreapi.com/products/${productId.productId}`)
+      .then((res) => {
         setProduct(res.data);
-      }
-    );
+      })
+      .catch((err) => {
+        setErrorMsg(err.message);
+        return err;
+      });
   }, [productId]);
 
   console.log("You Product ID : ", product.image);
+  console.log("You Product ID : ", product.title);
 
   return (
     <div className="container-lg">
@@ -39,17 +45,15 @@ const ProductDetail = ({ errMsg }) => {
           </div>
           <div className="col-10 col-xl-7 col-md-7 col-sm-7 g-2 gx-2">
             <div className="card-body">
-              <h5 className="card-header">
-                Mens Casual Premium Slim Fit T-Shirts.
-              </h5>
+              <h5 className="card-header">{product.title}</h5>
               <hr />
               <p className="fw-bold text-capitalize">
-                Category : men's clothing.
+                Category : {product.category}
               </p>
-              <p className="card-text">
-                Slim-fitting style, contrast raglan long sleeve, three-button.
+              <p className="card-text">{product.description}</p>
+              <p className="text-danger text-light-50 fw-bold h5">
+                ${product.price} USD
               </p>
-              <p className="text-danger text-light-50 fw-bold h5">$25 USD</p>
               <p className="text-muted">Free Delivery</p>
               <button className="text-center btn btn-primary">
                 <i className="bi bi-cart-plus-fill"></i> Add Cart
