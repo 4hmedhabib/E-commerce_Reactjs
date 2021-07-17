@@ -1,12 +1,13 @@
 import "./App.css";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { Navbar, Footer, Home, ProductDetail } from "./components";
+import { Navbar, Footer, Home, ProductDetail, Cart } from "./components";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const addCartHandler = (product) => {
+    product.quantity = 1;
     setCartItems((prevState) => [...prevState, product]);
   };
 
@@ -18,6 +19,9 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <Home addCart={addCartHandler} cart={cartItems} />
+            </Route>
+            <Route exact path="/cart">
+              <Cart cart={cartItems} />
             </Route>
             <Route exact path="/products/:productId">
               <ProductDetail cart={cartItems} addCart={addCartHandler} />

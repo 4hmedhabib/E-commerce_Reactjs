@@ -1,16 +1,17 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = ({ cartItems }) => {
-  console.log(cartItems);
-
   return (
     <div>
       <nav className="navbar navbar-light bg-light">
         <div className="container-lg">
-          <span className="navbar-brand h1">E-commerce</span>
-          <span
-            className="position-relative text-center align-items-center me-2"
+          <Link to="/" className="navbar-brand h1">
+            E-commerce
+          </Link>
+          <Link
+            to="/cart"
+            className=" text-decoration-none text-dark position-relative text-center align-items-center me-2"
             id="cart-bg"
           >
             <i className="h3 bi bi-cart"></i>
@@ -20,7 +21,7 @@ const Navbar = ({ cartItems }) => {
             >
               {cartItems} <span className="visually-hidden">Cart Items</span>
             </span>
-          </span>
+          </Link>
         </div>
       </nav>
     </div>

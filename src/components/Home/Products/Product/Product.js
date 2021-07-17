@@ -22,7 +22,7 @@ const Product = ({ product, addCart, cart }) => {
             </Link>
             <button
               onClick={() => addCart(product)}
-              disabled={cart.some((cartItem) => cartItem.id === product.id)}
+              // disabled={cart.some((cartItem) => cartItem.id === product.id)}
               className={
                 "btn btn-sm  me-2 " +
                 (cart.some((cartItem) => cartItem.id === product.id)
