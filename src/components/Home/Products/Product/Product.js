@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Product.css";
 
 const Product = ({ product, addCart, cart }) => {
@@ -13,9 +14,12 @@ const Product = ({ product, addCart, cart }) => {
         <div className="w-100 d-flex flex-row justify-content-around align-items-center mb-2">
           <p className="h5 text-danger">${product.price}</p>
           <div>
-            <button className="btn btn-sm btn-primary text-light me-2">
+            <Link
+              to={"/products/" + product.id}
+              className="btn btn-sm btn-primary text-light me-2"
+            >
               view
-            </button>
+            </Link>
             <button
               onClick={() => addCart(product)}
               disabled={cart.some((cartItem) => cartItem.id === product.id)}

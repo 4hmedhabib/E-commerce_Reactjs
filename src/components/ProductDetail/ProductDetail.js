@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
 import "./ProductDetial.css";
 
-const ProductDetail = () => {
+const ProductDetail = ({ cart, addCart }) => {
   const [product, setProduct] = useState("");
   const [errorMsg, setErrorMsg] = useState(false);
 
@@ -19,9 +19,6 @@ const ProductDetail = () => {
         return err;
       });
   }, [productId]);
-
-  console.log("You Product ID : ", product.image);
-  console.log("You Product ID : ", product.title);
 
   return (
     <div className="container-lg">
@@ -55,8 +52,20 @@ const ProductDetail = () => {
                 ${product.price} USD
               </p>
               <p className="text-muted">Free Delivery</p>
-              <button className="text-center btn btn-primary">
-                <i className="bi bi-cart-plus-fill"></i> Add Cart
+              <button
+                onClick={() => addCart(product)}
+                disabled={cart.some((cartItem) => cartItem.id === product.id)}
+                className={
+                  "btn text-center me-2 " +
+                  (cart.some((cartItem) => cartItem.id === product.id)
+                    ? "btn-light"
+                    : "btn-primary")
+                }
+              >
+                <i className="bi bi-cart-plus-fill"></i>{" "}
+                {cart.some((cartItem) => cartItem.id === product.id)
+                  ? "Cart Added"
+                  : "Add Cart"}
               </button>
             </div>
           </div>

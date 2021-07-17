@@ -6,8 +6,6 @@ import { Navbar, Footer, Home, ProductDetail } from "./components";
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
 
-  const [isAdded, setIsAdded] = useState(false);
-
   const addCartHandler = (product) => {
     setCartItems((prevState) => [...prevState, product]);
   };
@@ -22,7 +20,7 @@ const App = () => {
               <Home addCart={addCartHandler} cart={cartItems} />
             </Route>
             <Route exact path="/products/:productId">
-              <ProductDetail />
+              <ProductDetail cart={cartItems} addCart={addCartHandler} />
             </Route>
             <Route path="*">
               <div className="text-center container">
