@@ -30,7 +30,7 @@ const ProductDetail = ({ cart, addCart }) => {
 
       <div className="card p-3 my-3">
         <div className="row ">
-          <div className="col-10 col-xl-4 col-md-4 col-sm-4 g-2 gx-2 d-flex flex-column justify-content-center align-items-start">
+          <div className="col-10 col-xl-4 col-md-4 col-sm-12 g-2 gx-2 d-flex flex-column justify-content-center align-items-start">
             <div>
               <img
                 id="res-img"
@@ -40,7 +40,7 @@ const ProductDetail = ({ cart, addCart }) => {
               />
             </div>
           </div>
-          <div className="col-10 col-xl-7 col-md-7 col-sm-7 g-2 gx-2">
+          <div className="col-10 col-xl-7 col-md-7 col-sm-12 g-2 gx-2">
             <div className="card-body">
               <h5 className="card-header">{product.title}</h5>
               <hr />
