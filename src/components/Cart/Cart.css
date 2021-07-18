@@ -2,3 +2,38 @@
   max-width: 100px;
   height: 100;
 }
+
+.quantity-box {
+  width: 100px;
+  height: 30px;
+  max-height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-quantity {
+  background-color: transparent;
+  width: 35px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-subs,
+.btn-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 32px;
+  padding: 0%;
+  margin: 0%;
+}
+
+.btn-subs:hover,
+.btn-add:hover {
+  background: gray;
+  color: white;
+  cursor: pointer;
+}

@@ -18,7 +18,6 @@ const Cart = ({ cart }) => {
       }
       return p.quantity;
     });
-    console.log("Cart Items Updated : ", products);
   };
 
   const quantitySubs = (product) => {
@@ -26,66 +25,61 @@ const Cart = ({ cart }) => {
       if (p.id === product.id) {
         if (product.quantity > 1) {
           return (p.quantity -= 1);
-        } else {
-          console.log("Ma leeka");
         }
       }
       return p.quantity;
     });
-    console.log("Cart Items Updated : ", products);
   };
 
   return (
     <div className="container-lg">
+      <div className="row my-3">
+        <Link to="/" className="link-dark text-decoration-none h5">
+          <i className="bi h4 bi-arrow-left-circle"></i> Back
+        </Link>
+      </div>
+      <hr />
       <div className="row">
         <div className="col-12 col-lg-8 col-md-8 col-sm-8">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Product</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products &&
-                products.map((product) => {
-                  return (
-                    <tr>
-                      <th scope="row">
+          {products &&
+            products.map((product) => {
+              return (
+                <div className="card">
+                  <div className="card-body">
+                    <div>
+                      <h5>Order Review</h5>
+                      <hr />
+                    </div>
+                    <div className="d-flex">
+                      <div className="me-4">
                         <img
                           id="cart-img"
                           className="img-fluid"
                           src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
                           alt=""
                         />
-                      </th>
-                      <td>
-                        <div className="">
-                          <p>Lorem ipsum dolor sit amet.</p>
-                          <input
-                            type="number"
-                            name="cart-quantity-input"
-                            id="cart-quantity-input"
-                          />
-                          <button onClick={() => quantityAdd(product)}>
-                            hello
-                          </button>
-                          <button onClick={() => quantitySubs(product)}>
-                            subs
-                          </button>
-                          <p className=" my-3 text-danger fw-bold">
-                            Price: $15 USD
-                          </p>
-                          <button className="btn btn-sm btn-danger">
-                            <i className=" bi bi-trash"></i> Remove
-                          </button>
+                      </div>
+                      <div>
+                        <h5 className="card-title">
+                          Lorem ipsum dolor sit amet consectetur.
+                        </h5>
+                        <p className="text-muted">In Stock</p>
+                        <h3 className="text-danger fw-bold">$120 </h3>
+                        <div className="d-flex mt-3 quantity-box border border-secondary p-0">
+                          <span className="btn-subs border-end border-secondary">
+                            -
+                          </span>
+                          <p className="result-quantity">1</p>
+                          <span className="btn-add border-start border-secondary">
+                            +
+                          </span>
                         </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>
