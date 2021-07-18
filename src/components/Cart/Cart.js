@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { OrderReview, OrderSummary } from "./";
+import { OrderReview, OrderSummary, EmptyCart } from "./";
 import "./Cart.css";
 
 const Cart = ({ cart, remove, empty, add, subs, totalQuantity, total }) => {
@@ -20,7 +20,7 @@ const Cart = ({ cart, remove, empty, add, subs, totalQuantity, total }) => {
       <hr />
       <div className="row d-flex justify-content-center">
         {cart.length === 0 ? (
-          'console.log("empty")'
+          <EmptyCart />
         ) : (
           <>
             <OrderReview

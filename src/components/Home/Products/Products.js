@@ -76,11 +76,11 @@ const Products = ({ addCart, cart }) => {
         setProducts(null);
         setErrorMsg(err.message);
       });
-  }, []);
+  });
 
   return (
     <div className="container">
-      <div className="row d-flex align-items-sm-start justify-content-sm-start justify-content-center align-items-sm-center">
+      <div className="mb-5 row d-flex align-items-sm-start justify-content-sm-start justify-content-center align-items-sm-center">
         {errorMsg ? (
           <Loading msg={errorMsg} />
         ) : products !== null ? (
