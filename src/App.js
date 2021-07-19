@@ -1,6 +1,13 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  useHistory,
+  withRouter,
+} from "react-router-dom";
 import {
   Navbar,
   Footer,
@@ -8,11 +15,14 @@ import {
   ProductDetail,
   Cart,
   Checkout,
+  OrderCompleted,
 } from "./components";
 
 const App = () => {
+  let history = useHistory();
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(null);
+  const [shippingInfo, setShippingInfo] = useState({});
 
   const addCartHandler = (product) => {
     product.quantity = 1;
@@ -73,6 +83,13 @@ const App = () => {
     setCartItems([]);
   };
 
+  const handleChange = (e) => {
+    setShippingInfo((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
@@ -99,12 +116,18 @@ const App = () => {
             <Route exact path="/checkout">
               <Checkout
                 cartInfo={cartItems}
+                empty={empty}
                 remove={removeFromCart}
                 total={total}
                 totalQuantity={totalQuantity}
                 add={quantityAdd}
                 subs={quantitySubs}
+                handleChange={handleChange}
+                shippingInfo={shippingInfo}
               />
+            </Route>
+            <Route exact path="/ordercompleted">
+              <OrderCompleted />
             </Route>
             <Route path="*">
               <div className="text-center container">

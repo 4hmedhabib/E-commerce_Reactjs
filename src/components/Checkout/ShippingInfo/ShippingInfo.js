@@ -1,21 +1,14 @@
-import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-const ShippingInfo = () => {
-  const [shippingInfo, setShippingInfo] = useState({});
-
-  const handleChange = (e) => {
-    setShippingInfo((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
+const ShippingInfo = ({ cart, empty, handleChange, shippingInfo }) => {
+  let history = useHistory();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("submited");
+    history.push("/ordercompleted");
+    return empty();
   };
 
-  console.log("======", shippingInfo);
   return (
     <div>
       <form onSubmit={submitHandler}>
@@ -32,6 +25,7 @@ const ShippingInfo = () => {
               placeholder="Full name"
               defaultValue={shippingInfo.fullname}
               onChange={(e) => handleChange(e)}
+              required
             />
           </div>
           <div className="col-md">
@@ -46,6 +40,7 @@ const ShippingInfo = () => {
               name="phone"
               className="form-control"
               placeholder="Phone"
+              required
             />
           </div>
         </div>
@@ -61,6 +56,7 @@ const ShippingInfo = () => {
               className="form-control"
               placeholder="City - Magaalada"
               name="city"
+              required
             />
           </div>
           <div className="col-md">
@@ -74,6 +70,7 @@ const ShippingInfo = () => {
               className="form-control"
               placeholder="Xaafada - Xaafada"
               name="village"
+              required
             />
           </div>
         </div>
@@ -89,6 +86,7 @@ const ShippingInfo = () => {
               name="paymentMethod"
               defaultValue="Zaad Service"
               id="1"
+              required
             />
             <label class="form-check-label" for="1">
               Zaad Service - 55555
@@ -102,6 +100,7 @@ const ShippingInfo = () => {
               name="paymentMethod"
               defaultValue="Edahab"
               id="2"
+              required
             />
             <label class="form-check-label" for="2">
               Edahab - 99999
@@ -115,6 +114,7 @@ const ShippingInfo = () => {
               name="paymentMethod"
               defaultValue="Cash On Delivery"
               id="3"
+              required
             />
             <label class="form-check-label" for="3">
               Cash On Delivery

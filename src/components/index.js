@@ -5,3 +5,4 @@ export { default as ProductDetail } from "./ProductDetail/ProductDetail";
 export { default as Cart } from "./Cart/Cart";
 export { default as Loading } from "./Loading/Loading";
 export { default as Checkout } from "./Checkout/Checkout";
+export { default as OrderCompleted } from "./OrderCompleted/OrderCompleted";

@@ -1,7 +1,17 @@
 import { Link, Redirect } from "react-router-dom";
 import { ShippingInfo, OrderSummery, OrderReview } from "./";
 
-const Checkout = ({ cartInfo, remove, add, subs, total, totalQuantity }) => {
+const Checkout = ({
+  cartInfo,
+  remove,
+  add,
+  subs,
+  total,
+  totalQuantity,
+  empty,
+  handleChange,
+  shippingInfo,
+}) => {
   return (
     <div className="container">
       {cartInfo.length === 0 ? (
@@ -25,7 +35,12 @@ const Checkout = ({ cartInfo, remove, add, subs, total, totalQuantity }) => {
               <OrderSummery total={total} quantity={totalQuantity} />
             </div>
             <div className="col-12 col-lg-7 col-md-7 col-sm-12 float-md-start mb-3">
-              <ShippingInfo />
+              <ShippingInfo
+                cart={cartInfo}
+                empty={empty}
+                shippingInfo={shippingInfo}
+                handleChange={handleChange}
+              />
             </div>
           </div>
         </>
