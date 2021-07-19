@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const OrderSummary = ({ total, totalItems, totalQuantity }) => {
   return (
     <div className="col-12 col-lg-4 col-md-4 col-sm-10 my-3">
@@ -5,7 +7,7 @@ const OrderSummary = ({ total, totalItems, totalQuantity }) => {
         <div className="card-bod">
           <div className="card-header">Order Summary</div>
           <div className="card-body">
-            <table class="table">
+            <table className="table">
               <tbody>
                 <tr>
                   <th scope="row">Sub Total :</th>
@@ -34,9 +36,12 @@ const OrderSummary = ({ total, totalItems, totalQuantity }) => {
         </div>
       </div>
       <div className="my-3 text-center">
-        <button className="btn btn-lg btn-danger text-center px-5 py-2">
+        <Link
+          to="/checkout"
+          className="btn btn-lg btn-danger text-center px-5 py-2"
+        >
           <i className="bi bi-checkout"></i> Checkout
-        </button>
+        </Link>
       </div>
     </div>
   );

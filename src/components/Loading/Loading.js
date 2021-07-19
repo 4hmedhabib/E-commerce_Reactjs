@@ -13,7 +13,7 @@ const Loading = ({ msg }) => {
           <div>
             <h1>Loading</h1>
           </div>
-          <div class="lds-default">
+          <div className="lds-default">
             <div></div>
             <div></div>
             <div></div>

@@ -1,7 +1,14 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { Navbar, Footer, Home, ProductDetail, Cart } from "./components";
+import {
+  Navbar,
+  Footer,
+  Home,
+  ProductDetail,
+  Cart,
+  Checkout,
+} from "./components";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -88,6 +95,16 @@ const App = () => {
             </Route>
             <Route exact path="/products/:productId">
               <ProductDetail cart={cartItems} addCart={addCartHandler} />
+            </Route>
+            <Route exact path="/checkout">
+              <Checkout
+                cartInfo={cartItems}
+                remove={removeFromCart}
+                total={total}
+                totalQuantity={totalQuantity}
+                add={quantityAdd}
+                subs={quantitySubs}
+              />
             </Route>
             <Route path="*">
               <div className="text-center container">
