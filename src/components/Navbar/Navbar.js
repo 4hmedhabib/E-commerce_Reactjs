@@ -4,7 +4,7 @@ import "./Navbar.css";
 const Navbar = ({ cartItems }) => {
   return (
     <div>
-      <nav className="navbar navbar-light bg-light">
+      <nav className="navbar navbar-light bg-light fixed-top mb-5">
         <div className="container-lg">
           <Link to="/" className="navbar-brand h1">
             E-commerce

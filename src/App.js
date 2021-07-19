@@ -90,7 +90,7 @@ const App = () => {
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <Navbar cartItems={cartItems.length} />
-        <div className="d-flex flex-row">
+        <div className="d-flex flex-row mt-5">
           <Switch>
             <Route exact path="/">
               <Home addCart={addCartHandler} cart={cartItems} />
