@@ -1,24 +1,21 @@
 import { useState } from "react";
 
 const ShippingInfo = () => {
-  const [shippingInfo, setShippingInfo] = useState({
-    fullname: "",
-    phone: "",
-    address: {
-      city: "",
-      village: "",
-    },
-    paymentType: "",
-  });
+  const [shippingInfo, setShippingInfo] = useState({});
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    setShippingInfo((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log("submited");
   };
 
-  console.log(shippingInfo);
+  console.log("======", shippingInfo);
   return (
     <div>
       <form onSubmit={submitHandler}>
@@ -28,13 +25,13 @@ const ShippingInfo = () => {
               Full Name - Magaca :
             </label>
             <input
-              value={shippingInfo.fullname}
-              onChange={handleChange}
               type="text"
               id="fullname"
               name="fullname"
               className="form-control"
               placeholder="Full name"
+              defaultValue={shippingInfo.fullname}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="col-md">
@@ -42,8 +39,8 @@ const ShippingInfo = () => {
               Phone Number :
             </label>
             <input
-              value={shippingInfo.phone}
-              onChange={handleChange}
+              defaultValue={shippingInfo.phone}
+              onChange={(e) => handleChange(e)}
               type="number"
               id="phone"
               name="phone"
@@ -54,15 +51,16 @@ const ShippingInfo = () => {
         </div>
         <div className="row mb-3">
           <div className="col-md">
-            <label htmlFor="city" className="form-label">
+            <label htmlFor="address[city]" className="form-label">
               City - Magaalada :
             </label>
             <input
-              value={shippingInfo.address.city}
-              onChange={handleChange}
+              defaultValue={shippingInfo.city}
+              onChange={(e) => handleChange(e)}
               type="text"
               className="form-control"
               placeholder="City - Magaalada"
+              name="city"
             />
           </div>
           <div className="col-md">
@@ -70,11 +68,12 @@ const ShippingInfo = () => {
               Address - Xaafada :
             </label>
             <input
-              value={shippingInfo.address.village}
-              onChange={handleChange}
+              defaultValue={shippingInfo.village}
+              onChange={(e) => handleChange(e)}
               type="text"
               className="form-control"
               placeholder="Xaafada - Xaafada"
+              name="village"
             />
           </div>
         </div>
@@ -84,8 +83,7 @@ const ShippingInfo = () => {
           </label>
           <div className="form-check mb-1">
             <input
-              value={shippingInfo.paymentType}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
               className="form-check-input"
               type="radio"
               name="paymentMethod"
@@ -98,8 +96,7 @@ const ShippingInfo = () => {
           </div>
           <div className="form-check mb-1">
             <input
-              value={shippingInfo.paymentType}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
               className="form-check-input"
               type="radio"
               name="paymentMethod"
@@ -112,8 +109,7 @@ const ShippingInfo = () => {
           </div>
           <div className="form-check mb-1">
             <input
-              value={shippingInfo.paymentType}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
               className="form-check-input"
               type="radio"
               name="paymentMethod"
