@@ -5,8 +5,8 @@ const ShippingInfo = ({ cart, empty, handleChange, shippingInfo }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    history.push("/ordercompleted");
-    return empty();
+    history.push("/ordercompleted/");
+    // return empty();
   };
 
   return (

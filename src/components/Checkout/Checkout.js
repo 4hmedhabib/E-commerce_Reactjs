@@ -8,6 +8,7 @@ const Checkout = ({
   subs,
   total,
   totalQuantity,
+  totalItems,
   empty,
   handleChange,
   shippingInfo,
@@ -32,7 +33,11 @@ const Checkout = ({
                 subs={subs}
                 remove={remove}
               />
-              <OrderSummery total={total} quantity={totalQuantity} />
+              <OrderSummery
+                total={total}
+                totalQuantity={totalQuantity}
+                totalItems={totalItems}
+              />
             </div>
             <div className="col-12 col-lg-7 col-md-7 col-sm-12 float-md-start mb-3">
               <ShippingInfo

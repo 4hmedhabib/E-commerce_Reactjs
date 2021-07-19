@@ -1,20 +1,84 @@
-const OrderCompleted = () => {
+import { useState, useEffect } from "react";
+import moment from "moment";
+import { useHistory, Redirect, useParams } from "react-router-dom";
+const OrderCompleted = ({ total, cart, empty, info }) => {
+  let history = useHistory();
+  const params = useParams();
+  console.log(params.orderId);
+  const [date, setDate] = useState("");
+
+  useEffect(() => {
+    return () => {
+      setDate(moment().format("MMMM Do YYYY, h:mm:ss a"));
+    };
+  }, [info]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    history.push("/");
+    return empty();
+  };
+
+  console.log("=", info);
+
   return (
-    <div>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <h1 className="text-muted text-center">Thank You!</h1>
-          </div>
-        </div>
-        <div className="card">
-          <div className="row">
-            <div className="col-10">
-              <div className="card-body">
-                <h1 className="text-muted">Thank You </h1>
+    <div className="container text-center">
+      <button onClick={submitHandler} className="btn btn-primary px-5 my-3">
+        Close
+      </button>
+      <div className=" row d-flex justify-content-center align-items-center">
+        <div className="col-12 col-lg-10 col-sm-10">
+          {cart.length < 1 ? (
+            <Redirect to="cart" />
+          ) : (
+            <div className="card">
+              <div className="card-header bg-secondary  text-light fw-bold">
+                <h3>Order Recieved</h3>
+              </div>
+              <div className="card-body bg-light">
+                <table class="table text-start">
+                  <tbody>
+                    <tr>
+                      <td>Order ID : </td>
+                      <td>a1564564156</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Date : </td>
+                      <td>{date}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Total : </td>
+                      <td>${total}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Payment Method : </td>
+                      <td>{info.paymentMethod}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Full Name : </td>
+                      <td>{info.fullname}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Shipping Address : </td>
+                      <td>{info.city + ", " + info.village}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

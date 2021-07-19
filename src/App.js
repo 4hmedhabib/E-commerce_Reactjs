@@ -23,6 +23,7 @@ const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(null);
   const [shippingInfo, setShippingInfo] = useState({});
+  const [orderId, setOrderId] = useState([]);
 
   const addCartHandler = (product) => {
     product.quantity = 1;
@@ -124,10 +125,16 @@ const App = () => {
                 subs={quantitySubs}
                 handleChange={handleChange}
                 shippingInfo={shippingInfo}
+                totalitems={cartItems.length}
               />
             </Route>
-            <Route exact path="/ordercompleted">
-              <OrderCompleted />
+            <Route exact path="/ordercompleted/:orderId">
+              <OrderCompleted
+                total={total}
+                cart={cartItems}
+                empty={empty}
+                info={shippingInfo}
+              />
             </Route>
             <Route path="*">
               <div className="text-center container">
