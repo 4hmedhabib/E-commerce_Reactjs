@@ -1,13 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  useHistory,
-  withRouter,
-} from "react-router-dom";
+
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import {
   Navbar,
   Footer,
@@ -19,11 +13,12 @@ import {
 } from "./components";
 
 const App = () => {
-  let history = useHistory();
+  const shortId = require("short-unique-id");
+  const uid = new shortId();
+  const uuid = uid.stamp(32);
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(null);
   const [shippingInfo, setShippingInfo] = useState({});
-  const [orderId, setOrderId] = useState([]);
 
   const addCartHandler = (product) => {
     product.quantity = 1;
@@ -40,7 +35,7 @@ const App = () => {
 
   useEffect(() => {
     setTotal((Math.round(totalPrice * 100) / 100).toFixed(2));
-  }, [totalPrice]);
+  }, [totalPrice, uuid]);
 
   const totalQuantity =
     cartItems &&
@@ -126,6 +121,7 @@ const App = () => {
                 handleChange={handleChange}
                 shippingInfo={shippingInfo}
                 totalitems={cartItems.length}
+                id={uuid}
               />
             </Route>
             <Route exact path="/ordercompleted/:orderId">

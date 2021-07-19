@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 const OrderSummery = ({ total, totalQuantity, totalItems }) => {
   return (
     <div className="">

@@ -14,7 +14,7 @@ const Loading = ({ msg }) => {
             <div>
               <h1>Loading</h1>
             </div>
-            <div class="lds-ripple">
+            <div className="lds-ripple">
               <div></div>
               <div></div>
             </div>

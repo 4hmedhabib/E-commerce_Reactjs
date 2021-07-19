@@ -1,11 +1,11 @@
 import { useHistory } from "react-router-dom";
 
-const ShippingInfo = ({ cart, empty, handleChange, shippingInfo }) => {
+const ShippingInfo = ({ cart, empty, handleChange, shippingInfo, id }) => {
   let history = useHistory();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    history.push("/ordercompleted/");
+    history.push(`/ordercompleted/${id}`);
     // return empty();
   };
 
@@ -88,7 +88,7 @@ const ShippingInfo = ({ cart, empty, handleChange, shippingInfo }) => {
               id="1"
               required
             />
-            <label class="form-check-label" for="1">
+            <label className="form-check-label" htmlFor="1">
               Zaad Service - 55555
             </label>
           </div>
@@ -102,7 +102,7 @@ const ShippingInfo = ({ cart, empty, handleChange, shippingInfo }) => {
               id="2"
               required
             />
-            <label class="form-check-label" for="2">
+            <label className="form-check-label" htmlFor="2">
               Edahab - 99999
             </label>
           </div>
@@ -116,7 +116,7 @@ const ShippingInfo = ({ cart, empty, handleChange, shippingInfo }) => {
               id="3"
               required
             />
-            <label class="form-check-label" for="3">
+            <label className="form-check-label" htmlFor="3">
               Cash On Delivery
             </label>
           </div>

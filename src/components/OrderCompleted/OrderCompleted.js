@@ -1,25 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import moment from "moment";
 import { useHistory, Redirect, useParams } from "react-router-dom";
 const OrderCompleted = ({ total, cart, empty, info }) => {
   let history = useHistory();
   const params = useParams();
-  console.log(params.orderId);
-  const [date, setDate] = useState("");
-
-  useEffect(() => {
-    return () => {
-      setDate(moment().format("MMMM Do YYYY, h:mm:ss a"));
-    };
-  }, [info]);
+  const orderId = params.orderId;
+  const [date, setDate] = useState(moment().format("MMMM Do YYYY, h:mm:ss a"));
 
   const submitHandler = (e) => {
     e.preventDefault();
     history.push("/");
     return empty();
   };
-
-  console.log("=", info);
 
   return (
     <div className="container text-center">
@@ -36,11 +28,11 @@ const OrderCompleted = ({ total, cart, empty, info }) => {
                 <h3>Order Recieved</h3>
               </div>
               <div className="card-body bg-light">
-                <table class="table text-start">
+                <table className="table text-start">
                   <tbody>
                     <tr>
                       <td>Order ID : </td>
-                      <td>a1564564156</td>
+                      <td>{orderId}</td>
                       <td></td>
                       <td></td>
                     </tr>
@@ -65,6 +57,12 @@ const OrderCompleted = ({ total, cart, empty, info }) => {
                     <tr>
                       <td>Full Name : </td>
                       <td>{info.fullname}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Phone : </td>
+                      <td>{info.phone}</td>
                       <td></td>
                       <td></td>
                     </tr>

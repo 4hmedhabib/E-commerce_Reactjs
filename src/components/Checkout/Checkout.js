@@ -12,6 +12,7 @@ const Checkout = ({
   empty,
   handleChange,
   shippingInfo,
+  id,
 }) => {
   return (
     <div className="container">
@@ -45,6 +46,7 @@ const Checkout = ({
                 empty={empty}
                 shippingInfo={shippingInfo}
                 handleChange={handleChange}
+                id={id}
               />
             </div>
           </div>
