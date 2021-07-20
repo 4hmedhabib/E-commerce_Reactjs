@@ -27,6 +27,7 @@ const Checkout = ({
             <hr />
           </div>
           <div className="row flex-md-row-reverse d-flex justify-content-between">
+            <h3 className="text-dark mb-3 card-header">Shipping Information</h3>
             <div className="col-12 col-lg-4 col-md-4 col-sm-12 float-md-end mb-3">
               <OrderReview
                 cart={cartInfo}
